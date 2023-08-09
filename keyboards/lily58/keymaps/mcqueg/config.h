@@ -26,10 +26,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
-#define ENABLE_COLEMAK
+//#define ENABLE_COLEMAK
 
-#define QUICK_TAP_TERM 0
-#define TAPPING_TERM 100
+//#define QUICK_TAP_TERM 0
+#define TAPPING_TERM 200
 #define TAPPING_TOGGLE 3
 
 // #undef RGBLED_NUM
