@@ -16,10 +16,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           _______, _______, LT(_SYM, KC_BSPC), LT(_NAV_MAC, KC_SPC), SFT_T(KC_ENT), KC_DEL, _______, _______
 ),
 [_NAV_MAC] = LAYOUT(
-  KC_ESC,  _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
+  _______,  _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______,                    _______, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, _______,
   _______, _______, _______, _______, KC_BTN1,   KC_BTN2,                A(KC_LEFT), KC_LEFT, KC_DOWN, KC_UP,  KC_RIGHT, A(KC_RIGHT),
-  _______, LCMD(KC_Z), LCMD(KC_X), LCMD(KC_C), _______, LCMD(KC_V),_______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END, _______,
+  _______, LCMD(KC_Z), LCMD(KC_X), LCMD(KC_C), _______, LCMD(KC_V),_______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END, _______,
                              _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
@@ -104,7 +104,20 @@ const char *read_keylogs(void);
 bool oled_task_user(void) {
   if (is_keyboard_master()) {
     // If you want to change the display of OLED, you need to change here
-    oled_write_ln(read_layer_state(), false);
+    oled_set_cursor(0,1);
+    // Switch on current active layer
+    switch (get_highest_layer(layer_state)){
+      case _COLE_MAC :
+        oled_write("MAC - COLEMAK", false);
+        break;
+      case _NAV_MAC :
+        oled_write("MAC - NAVIGATION", false);
+        break;
+      case _SYM :
+        oled_write("SYMBOLS", false);
+        break;
+    }
+    //oled_write_ln(read_layer_state(), false);
     oled_write_ln(read_keylog(), false);
     oled_write_ln(read_keylogs(), false);
     //oled_write_ln(read_mode_icon(keymap_config.swap_lalt_lgui), false);
