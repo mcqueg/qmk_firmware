@@ -28,9 +28,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //#define ENABLE_COLEMAK
 
-//#define QUICK_TAP_TERM 0
-#define TAPPING_TERM 200
-#define TAPPING_TOGGLE 3
+#define QUICK_TAP_TERM 0
+#define TAPPING_TERM 100
+#define TAPPING_TOGGLE 2
 
 // #undef RGBLED_NUM
 // #define RGBLIGHT_EFFECT_BREATHING
